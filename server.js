@@ -12,4 +12,10 @@ console.log("server is running on http://localhost:" + port);
 app.use(express.static("public"));
 //control + c per bloccare i processi????
 // di nuovo node.js
-// referesha la pagian
+// referesha la pagina
+let serverSocket = require("socket.io");
+let io = serverSocket(server);
+io.on("connection", newConnection);
+function newConnection(newSocket) {
+  console.log(newSocket.id);
+}
