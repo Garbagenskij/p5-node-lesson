@@ -5,7 +5,9 @@ console.log("up and running");
 // now type npm install express, succedono cose, compaiono nuove righe  in package.json e pure node_modules
 let express = require("express");
 let app = express();
-let port = 3000;
+let port = process.env.PORT || 3000;
+// this line upthere mean: if i'm running outside Heroku and therfore process.env.PORT does not exist, then use 3000
+// in this way it works both locally, bot on Heroku
 let server = app.listen(port);
 console.log("server is running on http://localhost:" + port);
 // to check if it works, everytime type node server.js
