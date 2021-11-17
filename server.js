@@ -18,4 +18,11 @@ let io = serverSocket(server);
 io.on("connection", newConnection);
 function newConnection(newSocket) {
   console.log(newSocket.id);
+
+  newSocket.on("mouse", mouseMessage);
+  function mouseMessage(dataReceived) {
+    console.log(dataReceived);
+    // from now, in the terminal you should see values for x and y when you move the arrow in the canva
+    newSocket.broadcast.emit("mouseBroadcast", dataReceived);
+  }
 }
